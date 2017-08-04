@@ -1,6 +1,6 @@
 package com.pangpang.test;
 
-import com.pangpang.Domain.User;
+import com.pangpang.domain.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

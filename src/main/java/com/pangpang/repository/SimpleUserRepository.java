@@ -1,6 +1,6 @@
 package com.pangpang.repository;
 
-import com.pangpang.Domain.User;
+import com.pangpang.domain.User;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 

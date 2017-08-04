@@ -1,6 +1,6 @@
 package com.pangpang.controller;
 
-import com.pangpang.Domain.User;
+import com.pangpang.domain.User;
 import com.pangpang.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

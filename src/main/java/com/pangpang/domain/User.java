@@ -1,4 +1,4 @@
-package com.pangpang.Domain;
+package com.pangpang.domain;
 
 import java.io.Serializable;
 

@@ -1,10 +1,9 @@
 package com.pangpang.service.impl;
 
-import com.pangpang.Domain.User;
+import com.pangpang.domain.User;
 import com.pangpang.repository.UserRepository;
 import com.pangpang.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
