@@ -1,12 +1,9 @@
 package com.pangpang.controller.rmi;
 
-import com.pangpang.service.HelloService;
 import com.pangpang.service.impl.HelloServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.naming.Name;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
