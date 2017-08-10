@@ -10,7 +10,7 @@ import java.rmi.server.UnicastRemoteObject;
  * Created by leewake on 2017/8/7 0007.
  */
 
-@Service
+@Service("helloService")
 public class HelloServiceImpl extends UnicastRemoteObject implements HelloService {
 
 
