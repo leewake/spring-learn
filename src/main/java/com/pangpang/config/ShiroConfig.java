@@ -29,8 +29,9 @@ public class ShiroConfig {
         //拦截器
         Map<String, String> map = new LinkedHashMap<>();
         map.put("/static/**", "anon");
-        map.put("/login", "logout");
+        map.put("/logout", "logout");
         map.put("/**", "authc");
+        map.put("/login", "authc");
 
         shiroFilterFactoryBean.setLoginUrl("/login");
         shiroFilterFactoryBean.setSuccessUrl("/index");
@@ -56,9 +57,9 @@ public class ShiroConfig {
 
     @Bean
     public MyShiroRealm myShiroRealm(){
-        MyShiroRealm myShioRealm = new MyShiroRealm();
-        myShioRealm.setCredentialsMatcher(hashedCredentialsMatcher());
-        return myShioRealm;
+        MyShiroRealm myShiroRealm = new MyShiroRealm();
+        myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        return myShiroRealm;
     }
 
     @Bean

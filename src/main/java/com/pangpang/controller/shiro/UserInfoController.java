@@ -1,14 +1,14 @@
 package com.pangpang.controller.shiro;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by leewake on 2017/8/11 0011.
  */
 
-@RestController
+@Controller
 @RequestMapping("/userinfo")
 public class UserInfoController {
 
