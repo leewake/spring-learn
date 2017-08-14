@@ -31,7 +31,7 @@ public class ShiroConfig {
         map.put("/static/**", "anon");
         map.put("/logout", "logout");
         map.put("/**", "authc");
-        map.put("/login", "authc");
+        //map.put("/login", "authc");
 
         shiroFilterFactoryBean.setLoginUrl("/login");
         shiroFilterFactoryBean.setSuccessUrl("/index");

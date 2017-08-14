@@ -1,13 +1,19 @@
 package com.pangpang.controller.shiro;
 
+import com.pangpang.util.ParamUtil;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by leewake on 2017/8/11 0011.
@@ -16,13 +22,13 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    @RequestMapping({"/","/index"})
-    public String index(){
-        return"/index";
+    @RequestMapping({"/", "/index"})
+    public String index() {
+        return "/index";
     }
 
     @RequestMapping("/login")
-    public String login(HttpServletRequest request, Map<String, Object> map) throws Exception{
+    public String login(HttpServletRequest request, Map<String, Object> map) throws Exception {
         System.out.println("HomeController.login()");
         // 登录失败从request中获取shiro处理的异常信息。
         // shiroLoginFailure:就是shiro异常类的全类名.
@@ -40,17 +46,49 @@ public class HomeController {
                 System.out.println("kaptchaValidateFailed -- > 验证码错误");
                 msg = "kaptchaValidateFailed -- > 验证码错误";
             } else {
-                msg = "else >> "+exception;
+                msg = "else >> " + exception;
                 System.out.println("else -- >" + exception);
             }
         }
         map.put("msg", msg);
-        // 此方法不处理登录成功,由shiro进行处理
+
+        Set<Map.Entry<String, String>> set = ParamUtil.getParams(request);
+
+        String username = "admin", password = "123456";
+
+        for (Map.Entry entry : set) {
+            if (entry.getKey().equals("username")){
+                if (entry.getValue() != null){
+                    username = (String) entry.getValue();
+                }else {
+                    username = "admin";
+                }
+            }
+
+            if (entry.getKey().equals("password")){
+                if (entry.getValue() != null){
+                    password = (String) entry.getValue();
+                }else {
+                    password = "123456";
+                }
+            }
+        }
+
+        Subject currentUser = SecurityUtils.getSubject();
+
+        if (!currentUser.isAuthenticated()) {
+            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            token.setRememberMe(false);
+            currentUser.login(token);
+
+            return "/login";
+        }
+
         return "/login";
     }
 
     @RequestMapping("/403")
-    public String unauthorizedRole(){
+    public String unauthorizedRole() {
         System.out.println("------没有权限-------");
         return "403";
     }
