@@ -17,7 +17,7 @@ import java.util.Properties;
  * Created by leewake on 2017/8/11 0011.
  */
 
-@Configuration
+//@Configuration
 public class ShiroConfig {
 
     @Bean

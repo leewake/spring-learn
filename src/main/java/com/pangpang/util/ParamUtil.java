@@ -4,14 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by leewake on 2017/8/14 0014.
  */
 public class ParamUtil {
 
-    public static Set<Map.Entry<String, String>> getParams(HttpServletRequest request) {
+    public static <T> T getParams(HttpServletRequest request) {
         Map map = new HashMap();
         Enumeration paramNames = request.getParameterNames();
         while (paramNames.hasMoreElements()) {
@@ -26,7 +25,7 @@ public class ParamUtil {
             }
         }
 
-        return map.entrySet();
+        return (T) map.entrySet();
 
         /*Set<Map.Entry<String, String>> set = map.entrySet();
         System.out.println("------------------------------");
