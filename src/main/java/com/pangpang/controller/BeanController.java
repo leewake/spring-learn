@@ -18,12 +18,12 @@ import java.rmi.RemoteException;
 public class BeanController {
 
     @RequestMapping("/getBeanByName")
-    public String getBeanByName(){
-        HelloService helloService = (HelloService) BeanUtil.getBean("helloService");
-        try {
-            System.out.println(helloService.sayHello("bean demo"));
-        } catch (RemoteException e) {
-            e.printStackTrace();
+            public String getBeanByName(){
+                HelloService helloService = (HelloService) BeanUtil.getBean("helloService");
+                try {
+                    System.out.println(helloService.sayHello("bean mvn "));
+                } catch (RemoteException e) {
+                    e.printStackTrace();
         }
         return "demo";
     }
